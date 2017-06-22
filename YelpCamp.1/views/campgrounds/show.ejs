@@ -1,0 +1,159 @@
+<% include ../partials/header %>
+<!-- Show Page -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="text-center">
+            <h1><%=campground.name%></h1>
+            <hr>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="text-center">
+            <h1><%=campground.region%></h1>
+            <hr>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%= campground.image %>">
+            </div>
+        </div>
+
+<!-- Campground description with IF statement depending on user identification -->
+        <div class="col-md-6">
+            <p><%= campground.description %></p>
+            <p>
+                <em>Submitted by: <%= campground.author.username %></em>
+            </p>
+                <% if(currentUser && campground.author.id.equals(currentUser.id)){ %>
+                    <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+                <form id="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+                <% } %>
+        </div>
+    </div>
+    
+    <!-- Small card elements with descriptions for each element from the 'Add New Campground' page -->
+    <div class="row">
+        <div class="col-md-2">
+            <div class="text-center">
+                <div class="card" style="width: 100%; border-style: solid; border-width: 1px;">
+                     <img class="card-img-top" src="../stylesheets/img/icons/017-web.png" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">Website</h4>
+                    <p class="card-text"><a><%= campground.website %></a></p>
+                </div>
+                </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+            <div class="text-center">
+                <div class="card" style="width: 100%; border-style: solid; border-width: 1px;">
+                    <img class="card-img-top" src="../stylesheets/img/icons/016-calendar.png" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">Opening Times</h4>
+                    <p class="card-text"><%= campground.open %></p>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="text-center">
+                <div class="card" style="width: 100%; border-style: solid; border-width: 1px;">
+                    <img class="card-img-top" src="../stylesheets/img/icons/011-mountain.png" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">Activities</h4>
+                    <p class="card-text"><%= campground.activities %></p>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="text-center">
+                <div class="card" style="width: 100%; border-style: solid; border-width: 1px;">
+                    <img class="card-img-top" src="../stylesheets/img/icons/008-contacts.png" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">Contact</h4>
+                    <p class="card-text"><%= campground.contact %></p>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="text-center">
+                <div class="card" style="width: 100%; border-style: solid; border-width: 1px;">
+                    <img class="card-img-top" src="../stylesheets/img/icons/004-bear.png" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">Bear Sightings</h4>
+                    <p class="card-text"><%= campground.danger %></p>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="text-center">
+                <div class="card" style="width: 100%; border-style: solid; border-width: 1px;">
+                    <img class="card-img-top" src="../stylesheets/img/icons/001-yen.png" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">Average Price</h4>
+                    <p class="card-text">¥<%= campground.price %> a night</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!-- Comment section - Including simple edit and delete function for the logged in user of the post -->
+<div class="container">  
+    <div class="row">
+        <div class="col-md-12">
+            <div class="commentbox">
+                <div class="col-md-6">
+            <div class="text-center">
+            <h4>Comments</h2>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="text-center">
+            <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
+            </div>
+        </div>
+            <% campground.comments.forEach(function(comment){ %>
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                        <strong><%= comment.author.username %></strong>
+                        <span class="pull-right">8 days ago</span>
+                        <p>
+                            <%= comment.text %> 
+                            <hr>
+                        </p>
+                         <% if(currentUser && comment.author.id.equals(currentUser.id)){ %>
+                        <a class="btn btn-xs btn-warning" 
+                        href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">
+                            Edit
+                            </a>
+                        <form action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                            <input id="delete-form" type="submit" class="btn btn-xs btn-danger" value="Delete">
+                        </form>
+                        <% } %>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<% include ../partials/footer %>

@@ -1,0 +1,103 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+       <!-- Large form to display all necessary elements for a campground page -->
+              <div style="width: 80%; margin: 100px auto;">
+              <h1 style="text-align: center;">Create A Campground</h1>
+              <form action="/campgrounds" method="POST">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Campground Name</label>
+                      <input type="text" name="name" class="form-control" id="emailinput" aria-describedby="emailInput" placeholder="Enter the name of the campground">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Price</label>
+                          <input class="form-control" type="number" name="price" placeholder="Enter the base price of the campground per night stay" min="0.01" step="0.01">    
+                      </div>
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">Image</label>
+                          <input class="form-control" type="text" name="image" placeholder="Insert an image url for the selected campground to be displayed">   
+                      </div>
+                      <div class="form-group">
+                      <label for="exampleTextarea">Campground Information</label>
+                      <textarea name="description" type="text" placeholder="Enter a description about the selected campground" class="form-control" id="exampleTextarea" rows="3"></textarea>
+                    </div>
+                    
+                     <!-- Radio buttons to prevent misspelling which would disrupt IF/ElSE statements -->
+                    <fieldset class="form-group">
+                      <legend>Region of the Campground</legend>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="region" id="optionsRadios1" value="Kyushu" checked>
+                          Kyushu
+                        </label>
+                      </div>
+                      <div class="form-check">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="region" id="optionsRadios2" value="Shikoku">
+                          Shikoku
+                        </label>
+                      </div>
+                      <div class="form-check">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="region" id="optionsRadios3" value="Tohoku">
+                          Tohoku
+                        </label>
+                      </div>
+                      <div class="form-check">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="region" id="optionsRadios4" value="Kansai">
+                          Kansai
+                        </label>
+                      </div>
+                      <div class="form-check">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="region" id="optionsRadios5" value="Kanto">
+                          Kanto
+                        </label>
+                      </div>
+                      <div class="form-check">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="region" id="optionsRadios6" value="Chubu">
+                          Chubu
+                        </label>
+                      </div>
+                      <div class="form-check">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="region" id="optionsRadios7" value="Chugoku">
+                          Chugoku
+                        </label>
+                      </div>
+                      <div class="form-check">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="region" id="optionsRadios8" value="Hokkaido">
+                          Hokkaido
+                        </label>
+                      </div>
+                    </fieldset>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Campground Website</label>
+                      <input type="text" class="form-control" name="website" id="exampleInputEmail1" aria-describedby="website" placeholder="Enter the website of the campground (If applicable)">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Things to do in/around the Campground</label>
+                      <input type="text" class="form-control" name="activities" id="exampleInputEmail1" aria-describedby="activity" placeholder="What is there to do?">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Contact Details</label>
+                      <input type="text" class="form-control" name="contact" id="exampleInputEmail1" aria-describedby="details" placeholder="Enter the contact number of the campground">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Opening Times</label>
+                      <input type="text" class="form-control" name="open" id="exampleInputEmail1" aria-describedby="opening" placeholder="What time of year will the campground open and close?">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Any dangerous animal activity? (Bears)</label>
+                      <input type="text" class="form-control" name="danger" id="exampleInputEmail1" aria-describedby="warning" placeholder="Is there possibilities of bear sightings nearby?">
+                    </div>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+              <button class="btn btn-secondary btn-lg btn-block"><a href="/">Go Back</a></button> 
+      </form>
+      </div>
+    </div>
+</div>
+<% include ../partials/footer %>

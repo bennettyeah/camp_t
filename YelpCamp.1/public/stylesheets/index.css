@@ -1,0 +1,120 @@
+.hide {
+    display: none;
+}
+
+@media screen and (max-width: 768px){
+    .newbtn {
+        display: block;
+    }
+    
+    .btn {
+        display: block;
+    }
+}
+
+#menu {
+    list-style: none;
+}
+
+#Tohoku {
+    background-color: #ffe6e6;
+    height: 235px;
+    width: 285px;
+    background: url('/stylesheets/img/tohoku.jpg') no-repeat;
+      background-size:contain;
+}
+
+#Kansai {
+    background-color: #ffcccc;
+    height: 235px;
+    width: 285px;
+        background: url('/stylesheets/img/kansai.jpg') no-repeat;
+      background-size:contain;
+}
+
+#Kanto {
+    background-color: #ffb3b3;
+    height: 235px;
+    width: 285px;
+    background: url('/stylesheets/img/kanto.jpg') no-repeat;
+      background-size:contain;
+}
+
+#Chubu {
+    background-color: #ff9999;
+    height: 235px;
+    width: 285px;
+        background: url('/stylesheets/img/chubu.jpg') no-repeat;
+      background-size:contain;
+}
+
+#Chugoku {
+    background-color: #ff8080;
+    height: 235px;
+    width: 285px;
+    background: url('/stylesheets/img/chugoku.jpg') no-repeat;
+      background-size:contain;
+}
+
+#Shikoku {
+    background-color: #ff6666;
+    height: 235px;
+    width: 285px;
+    background: url('/stylesheets/img/shikoku.jpg') no-repeat;
+      background-size:contain;
+}
+
+#Hokkaido {
+    background-color: #ff4d4d;
+    height: 235px;
+    width: 285px;
+    background: url('/stylesheets/img/hokkaido.jpg') no-repeat;
+      background-size:contain;
+}
+
+#Kyushu {
+    background-color:  #ff3333;
+    height: 235px;
+    width: 285px;
+    background: url('/stylesheets/img/kyushu.jpg') no-repeat;
+      background-size:contain;
+    
+}
+
+.popup {
+      text-align: center; 
+      vertical-align: middle; 
+      line-height: 200px; 
+      color: #fff; 
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+      font-size: 45px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+body, p, h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #DFDCE3;
+}
+
+/*#menu div {*/
+/*    border-color: #9C1003;*/
+/*    border-style: solid;*/
+/*    border-width: 1px;*/
+/*}*/
+
+
+h3:hover
+{
+    font-size: 450%;
+}
+
+.textsize:hover {
+    font-size: 400%;
+}
+

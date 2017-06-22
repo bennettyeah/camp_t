@@ -1,0 +1,292 @@
+<% include ../partials/header %>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous">
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
+
+<!-- Main Page -->
+<body>
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <p>Camp Tamago is dedicated to taking the hassle out of searching for a campground to stay at while travelling in Japan, we are always on the look out for campgrounds. Browse the selection below or you can join in and add the great ones you've found!</p>
+                </div>
+                <div class="col-md-2">
+                    <a class="btn btn-primary btn-large newbtn" id="addnew" href="/campgrounds/new">New Campground</a>
+                </div>
+            </div>
+        </div>
+    <!--   <div class="container">-->
+    <!--<div class="dropdown" id="pages">-->
+    <!--    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials-->
+    <!--    <span class="caret"></span></button>-->
+    <!--    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="pages">-->
+    <!--      <li role="presentation"><a class="dropdown-item" href="#" data-page="all">All</a></li>-->
+    <!--      <li role="presentation"><a class="dropdown-item" href="#" data-page="kyushu">Kyushu</a></li>-->
+    <!--      <li role="presentation"><a class="dropdown-item" href="#" data-page="kanto">Kanto</a></li>-->
+    <!--      <li role="presentation" class="divider"></li>-->
+    <!--      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>-->
+    <!--    </ul>-->
+    <!--</div>-->
+    <!--    </div>-->
+        
+    
+    <ul id="menu" class="" >
+        <div class="container">
+                    <div class="row display">
+                        <div id="Tohoku" class="col-md-3 col-sm-2 col-xs-12">
+                            <li><a data-page="tohoku" href="#"><h3 class="popup" >Tohoku </h3> </a></li>
+                        </div>
+                        <div id="Kansai" class="col-md-3 col-sm-2 col-xs-12">
+                            <li><a data-page="kansai" href="#"><h3 class="popup" >Kansai </h3> </a></li>
+                        </div>
+                        <div id="Shikoku" class="col-md-3 col-sm-2 col-xs-12">
+                            <li><a data-page="shikoku" href="#"><h3 class="popup" >Shikoku </h3> </a></li>
+                        </div>
+                        <div id="Chubu" class="col-md-3 col-sm-2 col-xs-12">
+                            <li><a data-page="chubu" href="#"><h3 class="popup" >Chubu </h3> </a></li>
+                        </div>
+                    </div>
+                     <div class="row display">
+                        <div id="Chugoku" class="col-md-3 col-sm-2 col-xs-12">
+                            <li><a data-page="chugoku" href="#"><h3 class="popup textsize">Chugoku</h3> </a></li>
+                        </div>
+                        <div id="Kanto" class="col-md-3 col-sm-2 col-xs-12">
+                            <li><a data-page="kanto" href="#"><h3 class="popup" >Kanto </h3> </a></li>
+                        </div>
+                        <div id="Kyushu" class="col-md-3 col-sm-2 col-xs-12">
+                            <li><a data-page="kyushu" href="#"><h3 class="popup">Kyushu </h3> </a></li>
+                        </div>
+                        <div id="Hokkaido" class="col-md-3 col-sm-2 col-xs-12">
+                            <li><a data-page="hokkaido" href="#"><h3 class="popup textsize" >Hokkaido </h3> </a></li>
+                        </div>
+                    </div>
+            </div>
+    </ul>
+
+<!-- Loop through all campgrounds with the specific name and/or show all -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="text-center">
+            <h2>Pick a campground to stay at: </h2>
+            </div>
+        </div>
+    </div>
+      <div id="pages">
+        <div class="row text-center page" style="display:flex; flex-wrap: wrap;" data-page="all">
+            <% campgrounds.forEach(function(campground){ %>
+                <div class="col-md-3 col-xs-6">
+                    <div class="thumbnail">
+                        <img src="<%= campground.image %>">
+                        <div class="caption">
+                            <h4><%= campground.name %></h4>
+                        </div>
+                        <p>
+                            <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                        </p>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+   
+
+    <div id="kyushu" class="page hide" data-page="kyushu">
+        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                   <%  campgrounds.forEach(function(campground){ %>
+                       <% if(campground.region === "Kyushu" ){ %>
+                         <div class="col-md-6 col-xs-6">
+                            <div class="thumbnail">
+                                    <img src="<%= campground.image %>">
+                                <div class="caption">
+                                    <h4><%= campground.name %></h4>
+                                </div>
+                                <p>
+                            <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                        </p>
+                            </div>
+                        </div>
+                        <% } %>
+                    <% }); %>
+            </div>
+    </div>
+    
+    <div id="kanto" class="page hide" data-page="kanto">
+       <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                   <%  campgrounds.forEach(function(campground){ %>
+                       <% if(campground.region === "Kanto" ){ %>
+                         <div class="col-md-6 col-xs-6">
+                            <div class="thumbnail">
+                                    <img src="<%= campground.image %>">
+                                <div class="caption">
+                                    <h4><%= campground.name %></h4>
+                                </div>
+                                <p>
+                            <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                        </p>
+                            </div>
+                        </div>
+                        <% } %>
+                    <% }); %>
+            </div>
+    </div>
+    <div id="kansai" class="page hide" data-page="kansai">
+        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                   <%  campgrounds.forEach(function(campground){ %>
+                       <% if(campground.region === "Kansai" ){ %>
+                         <div class="col-md-6 col-xs-6">
+                            <div class="thumbnail">
+                                    <img src="<%= campground.image %>">
+                                <div class="caption">
+                                    <h4><%= campground.name %></h4>
+                                </div>
+                                <p>
+                            <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                        </p>
+                            </div>
+                        </div>
+                        <% } %>
+                    <% }); %>
+            </div>
+    </div>
+    <div id="chubu" class="page hide" data-page="chubu">
+        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                   <%  campgrounds.forEach(function(campground){ %>
+                       <% if(campground.region === "Chubu" ){ %>
+                         <div class="col-md-6 col-xs-6">
+                            <div class="thumbnail">
+                                    <img src="<%= campground.image %>">
+                                <div class="caption">
+                                    <h4><%= campground.name %></h4>
+                                </div>
+                                <p>
+                            <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                        </p>
+                            </div>
+                        </div>
+                        <% } %>
+                    <% }); %>
+            </div>
+    </div>
+    <div id="tohoku" class="page hide" data-page="tohoku">
+        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                   <%  campgrounds.forEach(function(campground){ %>
+                       <% if(campground.region === "Tohoku" ){ %>
+                         <div class="col-md-6 col-xs-6">
+                            <div class="thumbnail">
+                                    <img src="<%= campground.image %>">
+                                <div class="caption">
+                                    <h4><%= campground.name %></h4>
+                               </div>
+                                <p>
+                            <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                        </p>
+                            </div>
+                        </div>
+                        <% } %>
+                    <% }); %>
+            </div>
+    </div>
+    <div id="hokkaido" class="page hide" data-page="hokkaido">
+       <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                   <%  campgrounds.forEach(function(campground){ %>
+                       <% if(campground.region === "Hokkaido" ){ %>
+                         <div class="col-md-6 col-xs-6">
+                            <div class="thumbnail">
+                                    <img src="<%= campground.image %>">
+                                <div class="caption">
+                                    <h4><%= campground.name %></h4>
+                                </div>
+                                <p>
+                            <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                        </p>
+                            </div>
+                        </div>
+                        <% } %>
+                    <% }); %>
+            </div>
+    </div>
+    <div id="chugoku" class="page hide" data-page="chugoku">
+        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                   <%  campgrounds.forEach(function(campground){ %>
+                       <% if(campground.region === "Chugoku" ){ %>
+                         <div class="col-md-6 col-xs-6">
+                            <div class="thumbnail">
+                                    <img src="<%= campground.image %>">
+                                <div class="caption">
+                                    <h4><%= campground.name %></h4>
+                               </div>
+                                <p>
+                            <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                        </p>
+                            </div>
+                        </div>
+                        <% } %>
+                    <% }); %>
+            </div>
+    </div>
+        <div id="shikoku" class="page hide" data-page="shikoku">
+            <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                   <%  campgrounds.forEach(function(campground){ %>
+                       <% if(campground.region === "Shikoku" ){ %>
+                         <div class="col-md-6 col-xs-6">
+                            <div class="thumbnail">
+                                    <img src="<%= campground.image %>">
+                                <div class="caption">
+                                    <h4><%= campground.name %></h4>
+                               </div>
+                                <p>
+                            <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                        </p>
+                            </div>
+                        </div>
+                        <% } %>
+                    <% }); %>
+            </div>
+        </div>
+</div>
+
+</body>
+
+
+
+
+
+
+
+<script src="/js/index.js" type="text/javascript" async> 
+// $(document).ready(function() {
+//     $(".dropdown li a").on('click', function(e) {
+//         e.preventDefault()
+//         var page = $(this).data('page');
+//         $("#pages .page:not('.hide')").stop().fadeOut('fast', function() {
+//             $(this).addClass('hide');
+//             $('#pages .page[data-page="'+page+'"]').fadeIn('slow').removeClass('hide');
+//         });
+//     });
+// });
+
+
+$(document).ready(function() {
+    $("#menu li a").on('click', function(e) {
+        e.preventDefault()
+        var page = $(this).data('page');
+        $("#pages .page:not('.hide')").stop().fadeOut('fast', function() {
+            $(this).addClass('hide');
+            $('#pages .page[data-page="'+page+'"]').fadeIn('slow').removeClass('hide');
+        });
+    });
+});
+
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<% include ../partials/footer %>
